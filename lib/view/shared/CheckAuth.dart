@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kanver_flutter_app/data/concretes/auth.dart';
 import 'package:kanver_flutter_app/view/pages/authentication/login_page.dart';
