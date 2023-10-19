@@ -5,6 +5,7 @@ class Auth extends IAuth {
   @override
   Future<void> createUser() async {
     try {
+      // ignore: unused_local_variable
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: "oguzhanoztrk00@gmail.com", password: "O.o123456");

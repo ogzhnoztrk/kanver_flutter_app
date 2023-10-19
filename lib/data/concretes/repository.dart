@@ -43,7 +43,7 @@ class Repository<T> extends IRepository {
 
       return documentList;
     } catch (e) {
-      print("Error getting documents: $e");
+      debugPrint("Error getting documents: $e");
     }
     throw Exception();
   }
@@ -59,7 +59,7 @@ class Repository<T> extends IRepository {
     var documents =
         querySnapshot.docs.where((element) => element.get("id") == entity.id);
     for (var element in documents) {
-      if (element != null) {
+      if (element.data() != null) {
         _fireStore
             .doc("$collectionPath/${element.id}")
             .delete()
@@ -96,7 +96,7 @@ class Repository<T> extends IRepository {
         await documentReference.delete();
       }
     } catch (e) {
-      print("Firestore belge silme hatası: $e");
+      debugPrint("Firestore belge silme hatası: $e");
     }
   }
 }

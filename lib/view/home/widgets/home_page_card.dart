@@ -1,12 +1,12 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// ignore: must_be_immutable
 class HomePageCard extends StatelessWidget {
-  Color color;
-  IconData icon;
-  String title;
-  Widget route;
+  late Color color;
+  late IconData icon;
+  late String title;
+  late Widget route;
   late Animation<double> animation;
   late Animation<double> animation2;
   HomePageCard({
@@ -41,25 +41,25 @@ class HomePageCard extends StatelessWidget {
             );
           },
           child: Container(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             height: _w / 2,
             width: _w / 2.4,
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xff040039).withOpacity(.15),
+                  color: const Color(0xff040039).withOpacity(.15),
                   blurRadius: 99,
                 ),
               ],
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(25),
               ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(),
+                const SizedBox(),
                 Container(
                   height: _w / 8,
                   width: _w / 8,
@@ -84,7 +84,7 @@ class HomePageCard extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(),
+                const SizedBox(),
               ],
             ),
           ),

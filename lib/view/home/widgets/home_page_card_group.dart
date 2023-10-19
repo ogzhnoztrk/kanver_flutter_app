@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:kanver_flutter_app/view/home/widgets/home_page_card.dart';
 
+// ignore: must_be_immutable
 class HomePageCardsGroup extends StatelessWidget {
   Color color;
   IconData icon;

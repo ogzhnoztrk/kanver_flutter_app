@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui';
 
-import 'package:kanver_flutter_app/view/home/widgets/home_page_card.dart';
 import 'package:kanver_flutter_app/view/home/widgets/home_page_card_group.dart';
 
 class HomePage extends StatefulWidget {
