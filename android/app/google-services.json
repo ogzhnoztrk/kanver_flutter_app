@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "227216983232",
+    "project_id": "kanver-332718",
+    "storage_bucket": "kanver-332718.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227216983232:android:567afcc5c3bc2a54cd1925",
+        "android_client_info": {
+          "package_name": "com.example.kanver_flutter_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6FPRmo2FlxrUU-FgwN_9gGyoHE4n8yLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
