@@ -3,18 +3,16 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:kanver_flutter_app/data/concretes/auth.dart';
-import 'package:kanver_flutter_app/view/pages/authentication/forgot_password_page.dart';
-import 'package:kanver_flutter_app/view/pages/authentication/register_page.dart';
+import 'package:kanver_flutter_app/view/pages/Authentication/login_page.dart';
 import 'package:kanver_flutter_app/view/pages/authentication/widgets/input_field.dart';
-import 'package:kanver_flutter_app/view/pages/home/home_page.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   late TextEditingController emailTextController;
   late TextEditingController passwordTextController;
   @override
@@ -52,25 +50,25 @@ class _LoginPageState extends State<LoginPage> {
                         child: SizedBox(),
                       ),
                       Expanded(
-                        flex: 3,
+                        flex: 2,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30),
                           child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaY: 25, sigmaX: 25),
+                            filter: ImageFilter.blur(sigmaY: 20, sigmaX: 20),
                             child: SizedBox(
                               width: size.width * .9,
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  // SIGN IN TITLE
+                                  // Register TITLE
                                   Padding(
                                     padding: EdgeInsets.only(
                                       top: size.width * .1,
                                       bottom: size.width * .1,
                                     ),
                                     child: Text(
-                                      'Giriş',
+                                      'Kayıt',
                                       style: TextStyle(
                                         fontSize: 25,
                                         fontWeight: FontWeight.w600,
@@ -87,7 +85,9 @@ class _LoginPageState extends State<LoginPage> {
                                     isEmail: true,
                                     controller: emailTextController,
                                   ),
-
+                                  SizedBox(
+                                    height: size.height * 0.01,
+                                  ),
                                   // PASSWORD FIELD
                                   InputField(
                                     icon: Icons.lock_outline,
@@ -97,53 +97,9 @@ class _LoginPageState extends State<LoginPage> {
                                     controller: passwordTextController,
                                   ),
 
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      // .
-                                      // şifremi Unuttum kısmı
-                                      RichText(
-                                        text: TextSpan(
-                                          text: 'Şifremi Unuttum!',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () {
-                                              HapticFeedback.lightImpact();
-                                              Navigator.of(context)
-                                                  .push(MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ForgotPasswordPage(),
-                                              ));
-                                            },
-                                        ),
-                                      ),
-                                      // .
-                                      // Hesap oluştur kısmı
-                                      RichText(
-                                        text: TextSpan(
-                                          text: 'Hesap oluştur',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () {
-                                              HapticFeedback.lightImpact();
-                                              Navigator.of(context)
-                                                  .push(MaterialPageRoute(
-                                                builder: (context) =>
-                                                    RegisterPage(),
-                                              ));
-                                            },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: size.width * .05),
+                                  SizedBox(height: size.width * 0.05),
 
-                                  // Giriş Butonu
+                                  // Kayıt Butonu
                                   InkWell(
                                     splashColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
@@ -152,21 +108,25 @@ class _LoginPageState extends State<LoginPage> {
                                       // Fluttertoast.showToast(
                                       //   msg: 'Sign-In button pressed',
                                       // );
-
-                                      Auth.loginUserWithEmailAndPassword(
-                                              emailTextController.text,
-                                              passwordTextController.text)
-                                          .whenComplete(() {
-                                        if (Auth.isLoggedIn()) {
+                                      debugPrint("Kayıta Basıldı");
+                                      debugPrint(passwordTextController.text);
+                                      debugPrint(emailTextController.text);
+                                      Auth.createUserEmailAndPassword(
+                                              emailTextController.text
+                                                  .toString(),
+                                              passwordTextController.text
+                                                  .toString())
+                                          .whenComplete(
+                                        () {
                                           Navigator.of(context)
                                               .pushAndRemoveUntil(
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HomePage(),
+                                                        LoginPage(),
                                                   ),
                                                   (route) => true);
-                                        }
-                                      });
+                                        },
+                                      );
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
@@ -180,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: const Text(
-                                        'Giriş',
+                                        'Kayıt Ol',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,

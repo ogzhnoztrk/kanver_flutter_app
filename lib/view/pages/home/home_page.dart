@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kanver_flutter_app/data/concretes/auth.dart';
+import 'package:kanver_flutter_app/view/pages/Authentication/login_page.dart';
+import 'package:kanver_flutter_app/view/pages/home/widgets/home_page_card.dart';
 import 'dart:ui';
 
 import 'package:kanver_flutter_app/view/pages/home/widgets/home_page_card_group.dart';
@@ -104,6 +107,18 @@ class _HomePageState extends State<HomePage>
                 route2: RouteWhereYouGo(),
                 animation: _animation,
                 animation2: _animation2,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Auth.signOut().whenComplete(() {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ),
+                        (route) => true);
+                  });
+                },
+                child: Text("Çıkış"),
               ),
               SizedBox(height: _w / 20),
             ],
