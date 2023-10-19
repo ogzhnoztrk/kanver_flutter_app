@@ -1,3 +1,1 @@
-abstract class IAuth {
-  Future<void> createUser();
-}
+abstract class IAuth {}
