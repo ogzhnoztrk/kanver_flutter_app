@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui';
 
-import 'package:kanver_flutter_app/view/home/widgets/home_page_card_group.dart';
+import 'package:kanver_flutter_app/view/pages/home/widgets/home_page_card_group.dart';
+import 'package:kanver_flutter_app/view/pages/test_page/route_where_you_go.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -49,8 +50,8 @@ class _HomePageState extends State<HomePage>
         children: [
           /// ListView
           ListView(
-            physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(_w / 17, _w / 20, 0, _w / 10),
@@ -123,13 +124,13 @@ class _HomePageState extends State<HomePage>
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return RouteWhereYouGo();
+                          return const RouteWhereYouGo();
                         },
                       ),
                     );
                   },
                   child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(99)),
+                    borderRadius: const BorderRadius.all(Radius.circular(99)),
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaY: 5, sigmaX: 5),
                       child: Container(
@@ -169,35 +170,6 @@ class _HomePageState extends State<HomePage>
         child: Container(
           height: _w / 18,
           color: Colors.transparent,
-        ),
-      ),
-    );
-  }
-}
-
-class RouteWhereYouGo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        elevation: 50,
-        centerTitle: true,
-        shadowColor: Colors.black.withOpacity(.5),
-        title: Text(
-          'EXAMPLE  PAGE',
-          style: TextStyle(
-              color: Colors.black.withOpacity(.7),
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1),
-        ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black.withOpacity(.8),
-          ),
-          onPressed: () => Navigator.maybePop(context),
         ),
       ),
     );

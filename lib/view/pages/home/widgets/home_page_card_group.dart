@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:kanver_flutter_app/view/home/widgets/home_page_card.dart';
+import 'package:kanver_flutter_app/view/pages/home/widgets/home_page_card.dart';
 
 // ignore: must_be_immutable
 class HomePageCardsGroup extends StatelessWidget {
