@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kanver_flutter_app/data/concretes/auth.dart';
 import 'package:kanver_flutter_app/view/pages/Authentication/login_page.dart';
-import 'package:kanver_flutter_app/view/pages/home/widgets/home_page_card.dart';
 import 'dart:ui';
 
 import 'package:kanver_flutter_app/view/pages/home/widgets/home_page_card_group.dart';
+import 'package:kanver_flutter_app/view/pages/profile/profile_page.dart';
 import 'package:kanver_flutter_app/view/pages/test_page/route_where_you_go.dart';
 
 class HomePage extends StatefulWidget {
@@ -83,15 +83,28 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
               HomePageCardsGroup(
+                color: Colors.green.shade900,
+                icon: Icons.account_box,
+                title: 'Profil',
+                context: context,
+                route: const ProfilePage(),
+                color2: Colors.red,
+                icon2: Icons.bloodtype,
+                title2: 'Donor Ol',
+                route2: const RouteWhereYouGo(),
+                animation: _animation,
+                animation2: _animation2,
+              ),
+              HomePageCardsGroup(
                 color: Colors.orange.shade900,
                 icon: Icons.campaign,
                 title: 'İlanlar',
                 context: context,
-                route: RouteWhereYouGo(),
-                color2: Color(0xff63ace5),
+                route: const RouteWhereYouGo(),
+                color2: const Color(0xff63ace5),
                 icon2: Icons.add_comment,
                 title2: 'İlan Ekle',
-                route2: RouteWhereYouGo(),
+                route2: const RouteWhereYouGo(),
                 animation: _animation,
                 animation2: _animation2,
               ),
@@ -100,25 +113,13 @@ class _HomePageState extends State<HomePage>
                 icon: Icons.medical_services,
                 title: 'Hastaneler',
                 context: context,
-                route: RouteWhereYouGo(),
+                route: const RouteWhereYouGo(),
                 color2: Colors.yellow.shade800,
                 icon2: Icons.assignment_late,
                 title2: 'Şikayet',
-                route2: RouteWhereYouGo(),
+                route2: const RouteWhereYouGo(),
                 animation: _animation,
                 animation2: _animation2,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Auth.signOut().whenComplete(() {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                          builder: (context) => LoginPage(),
-                        ),
-                        (route) => true);
-                  });
-                },
-                child: Text("Çıkış"),
               ),
               SizedBox(height: _w / 20),
             ],

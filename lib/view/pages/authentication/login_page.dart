@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:kanver_flutter_app/data/concretes/auth.dart';
 import 'package:kanver_flutter_app/view/pages/authentication/forgot_password_page.dart';
 import 'package:kanver_flutter_app/view/pages/authentication/register_page.dart';
-import 'package:kanver_flutter_app/view/pages/authentication/widgets/input_field.dart';
 import 'package:kanver_flutter_app/view/pages/home/home_page.dart';
+import 'package:kanver_flutter_app/view/shared/widgets/input_field.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:kanver_flutter_app/data/concretes/auth.dart';
 import 'package:kanver_flutter_app/view/pages/Authentication/login_page.dart';
-import 'package:kanver_flutter_app/view/pages/authentication/widgets/input_field.dart';
+import 'package:kanver_flutter_app/view/shared/widgets/input_field.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 class ForgotPasswordPage extends StatefulWidget {

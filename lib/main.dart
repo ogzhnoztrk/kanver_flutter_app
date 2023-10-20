@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kanver_flutter_app/data/concretes/auth.dart';
 import 'package:kanver_flutter_app/firebase_options.dart';
-import 'package:kanver_flutter_app/view/shared/CheckAuth.dart';
+import 'package:kanver_flutter_app/view/shared/check_auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,12 +17,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(Auth.isLoggedIn() ? "giriş yapılı" : "çıkış yapılı");
+    // debugPrint(Auth.isLoggedIn() ? "giriş yapılı" : "çıkış yapılı");
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       darkTheme: ThemeData.dark(),
       theme: ThemeData.light(),
-      home: CheckAuth(),
+      home: const CheckAuth(),
     );
   }
 }

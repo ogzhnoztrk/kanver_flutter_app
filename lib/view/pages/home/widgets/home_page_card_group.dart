@@ -35,26 +35,26 @@ class HomePageCardsGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     double _w = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.only(bottom: _w / 17),
+      padding: EdgeInsets.only(bottom: _w / 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // homePageCard(color, icon, title, context, route),
           HomePageCard(
-              color: color,
-              icon: icon,
-              title: title,
-              route: route,
-              animation: animation,
-              animation2: animation2),
+            color: color,
+            icon: icon,
+            title: title,
+            route: route,
+            animation: animation,
+            animation2: animation2,
+          ),
           HomePageCard(
-              color: color2,
-              icon: icon2,
-              title: title2,
-              route: route2,
-              animation: animation,
-              animation2: animation2),
-          // homePageCard(color2, icon2, title2, context, route2),
+            color: color2,
+            icon: icon2,
+            title: title2,
+            route: route2,
+            animation: animation,
+            animation2: animation2,
+          ),
         ],
       ),
     );
