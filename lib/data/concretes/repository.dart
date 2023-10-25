@@ -63,7 +63,7 @@ class Repository<T> extends IRepository {
         _fireStore
             .doc("$collectionPath/${element.id}")
             .delete()
-            .whenComplete(() => print("Silindi"));
+            .whenComplete(() => debugPrint("Silindi"));
       }
     }
     // for (var document in documents) {

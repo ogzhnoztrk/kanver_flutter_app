@@ -35,7 +35,7 @@ class BottomPortion extends StatelessWidget {
             ),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const PersonalInformations(),
+                builder: (context) => const PersonalInformationsPage(),
               ));
             },
             child: const ListTile(

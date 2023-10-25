@@ -10,6 +10,7 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegisterPageState createState() => _RegisterPageState();
 }
 
@@ -123,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                               .pushAndRemoveUntil(
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        LoginPage(),
+                                                        const LoginPage(),
                                                   ),
                                                   (route) => true);
                                         },

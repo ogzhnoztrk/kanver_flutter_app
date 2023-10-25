@@ -29,7 +29,7 @@ class Auth extends IAuth {
         debugPrint("mail onaylanmış");
       }
 
-      print(user);
+      debugPrint(user.toString());
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -46,7 +46,7 @@ class Auth extends IAuth {
     try {
       var userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      print(userCredential.toString());
+      debugPrint(userCredential.toString());
     } on FirebaseException catch (e) {
       debugPrint(e.toString());
     }
@@ -57,7 +57,7 @@ class Auth extends IAuth {
     try {
       _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 }
