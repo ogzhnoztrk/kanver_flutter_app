@@ -7,6 +7,8 @@ import 'package:kanver_flutter_app/view/shared/widgets/input_field.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({super.key});
+
   @override
   _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
 }
@@ -45,7 +47,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 Center(
                   child: Column(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: SizedBox(),
                       ),
                       Expanded(

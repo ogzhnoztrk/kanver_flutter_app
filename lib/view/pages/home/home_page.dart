@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kanver_flutter_app/data/concretes/auth.dart';
-import 'package:kanver_flutter_app/view/pages/Authentication/login_page.dart';
 import 'dart:ui';
 
 import 'package:kanver_flutter_app/view/pages/home/widgets/home_page_card_group.dart';
@@ -9,6 +7,8 @@ import 'package:kanver_flutter_app/view/pages/profile/profile_page.dart';
 import 'package:kanver_flutter_app/view/pages/test_page/route_where_you_go.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
     _animation = Tween<double>(begin: 0, end: 1)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut))
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    double _w = MediaQuery.of(context).size.width;
+    double w = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage>
                 parent: AlwaysScrollableScrollPhysics()),
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(_w / 17, _w / 20, 0, _w / 10),
+                padding: EdgeInsets.fromLTRB(w / 17, w / 20, 0, w / 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage>
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(height: _w / 35),
+                    SizedBox(height: w / 35),
                     Text(
                       'Gönüllü olarak kan bağışı\nyapabilceğiniz gönüllü uygulama',
                       style: TextStyle(
@@ -121,13 +121,13 @@ class _HomePageState extends State<HomePage>
                 animation: _animation,
                 animation2: _animation2,
               ),
-              SizedBox(height: _w / 20),
+              SizedBox(height: w / 20),
             ],
           ),
 
           /// SETTING ICON
           Padding(
-            padding: EdgeInsets.fromLTRB(0, _w / 9.5, _w / 15, 0),
+            padding: EdgeInsets.fromLTRB(0, w / 9.5, w / 15, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -150,8 +150,8 @@ class _HomePageState extends State<HomePage>
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaY: 5, sigmaX: 5),
                       child: Container(
-                        height: _w / 8.5,
-                        width: _w / 8.5,
+                        height: w / 8.5,
+                        width: w / 8.5,
                         decoration: BoxDecoration(
                           color: Colors.black.withOpacity(.05),
                           shape: BoxShape.circle,
@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage>
                         child: Center(
                           child: Icon(
                             Icons.settings,
-                            size: _w / 17,
+                            size: w / 17,
                             color: Colors.black.withOpacity(.6),
                           ),
                         ),
@@ -179,12 +179,12 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget blurTheStatusBar(BuildContext context) {
-    double _w = MediaQuery.of(context).size.width;
+    double w = MediaQuery.of(context).size.width;
     return ClipRRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaY: 5, sigmaX: 5),
         child: Container(
-          height: _w / 18,
+          height: w / 18,
           color: Colors.transparent,
         ),
       ),

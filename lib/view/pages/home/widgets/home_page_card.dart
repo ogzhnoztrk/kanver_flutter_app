@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class HomePageCard extends StatelessWidget {
@@ -21,16 +20,19 @@ class HomePageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _w = MediaQuery.of(context).size.width;
+    double w = MediaQuery.of(context).size.width;
     return Opacity(
       opacity: animation.value,
       child: Transform.translate(
         offset: Offset(0, animation2.value),
         child: InkWell(
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
           onTap: () {
-            HapticFeedback.lightImpact();
+            // HapticFeedback.lightImpact();
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -42,8 +44,8 @@ class HomePageCard extends StatelessWidget {
           },
           child: Container(
             padding: const EdgeInsets.all(15),
-            height: _w / 2,
-            width: _w / 2.4,
+            height: w / 2,
+            width: w / 2.4,
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -61,8 +63,8 @@ class HomePageCard extends StatelessWidget {
               children: [
                 const SizedBox(),
                 Container(
-                  height: _w / 8,
-                  width: _w / 8,
+                  height: w / 8,
+                  width: w / 8,
                   decoration: BoxDecoration(
                     color: color.withOpacity(.1),
                     shape: BoxShape.circle,

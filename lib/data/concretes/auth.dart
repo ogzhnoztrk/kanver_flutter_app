@@ -20,16 +20,16 @@ class Auth extends IAuth {
   static Future<void> createUserEmailAndPassword(
       String email, String password) async {
     try {
-      var _userCredential = await _auth.createUserWithEmailAndPassword(
+      var userCredential = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      var _user = _userCredential.user;
-      if (!_user!.emailVerified) {
-        await _user.sendEmailVerification();
+      var user = userCredential.user;
+      if (!user!.emailVerified) {
+        await user.sendEmailVerification();
       } else {
         debugPrint("mail onaylanmış");
       }
 
-      print(_user);
+      print(user);
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -44,11 +44,11 @@ class Auth extends IAuth {
   static Future<void> loginUserWithEmailAndPassword(
       String email, String password) async {
     try {
-      var _userCredential = await _auth.signInWithEmailAndPassword(
+      var userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      print(_userCredential.toString());
-    } catch (e) {
-      print(e.toString());
+      print(userCredential.toString());
+    } on FirebaseException catch (e) {
+      debugPrint(e.toString());
     }
   }
 

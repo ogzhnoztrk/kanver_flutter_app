@@ -33,9 +33,9 @@ class HomePageCardsGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _w = MediaQuery.of(context).size.width;
+    double w = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.only(bottom: _w / 20),
+      padding: EdgeInsets.only(bottom: w / 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

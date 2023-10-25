@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:kanver_flutter_app/data/concretes/auth.dart';
 import 'package:kanver_flutter_app/firebase_options.dart';
 import 'package:kanver_flutter_app/view/shared/check_auth.dart';
 

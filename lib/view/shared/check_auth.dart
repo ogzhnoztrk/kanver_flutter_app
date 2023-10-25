@@ -8,6 +8,6 @@ class CheckAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: !Auth.isLoggedIn() ? LoginPage() : HomePage());
+    return Scaffold(body: !Auth.isLoggedIn() ? const LoginPage() : const HomePage());
   }
 }

@@ -7,6 +7,8 @@ import 'package:kanver_flutter_app/view/shared/widgets/input_field.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -45,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Center(
                   child: Column(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: SizedBox(),
                       ),
                       Expanded(
@@ -154,7 +156,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                       ),
-                      Expanded(
+                      const Expanded(
                         child: SizedBox(),
                       ),
                     ],

@@ -5,7 +5,7 @@ class TopPortion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size _size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -49,7 +49,7 @@ class TopPortion extends StatelessWidget {
                         margin: const EdgeInsets.all(0),
                         child: IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.edit_outlined,
                               color: Colors.black,
                             ))),
@@ -60,13 +60,13 @@ class TopPortion extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: _size.height * .03,
+          top: size.height * .03,
           left: 0,
           child: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: Icon(Icons.arrow_back_ios)),
+              icon: const Icon(Icons.arrow_back_ios)),
         )
       ],
     );

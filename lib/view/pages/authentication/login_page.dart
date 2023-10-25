@@ -10,6 +10,8 @@ import 'package:kanver_flutter_app/view/shared/widgets/input_field.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -48,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                 Center(
                   child: Column(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: SizedBox(),
                       ),
                       Expanded(
@@ -106,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                                       RichText(
                                         text: TextSpan(
                                           text: 'Şifremi Unuttum!',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                           ),
                                           recognizer: TapGestureRecognizer()
@@ -115,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                                               Navigator.of(context)
                                                   .push(MaterialPageRoute(
                                                 builder: (context) =>
-                                                    ForgotPasswordPage(),
+                                                    const ForgotPasswordPage(),
                                               ));
                                             },
                                         ),
@@ -125,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                                       RichText(
                                         text: TextSpan(
                                           text: 'Hesap oluştur',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                           ),
                                           recognizer: TapGestureRecognizer()
@@ -134,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                                               Navigator.of(context)
                                                   .push(MaterialPageRoute(
                                                 builder: (context) =>
-                                                    RegisterPage(),
+                                                    const RegisterPage(),
                                               ));
                                             },
                                         ),
@@ -162,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                               .pushAndRemoveUntil(
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        HomePage(),
+                                                        const HomePage(),
                                                   ),
                                                   (route) => true);
                                         }
@@ -195,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      Expanded(
+                      const Expanded(
                         child: SizedBox(),
                       ),
                     ],

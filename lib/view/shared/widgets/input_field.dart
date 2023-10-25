@@ -7,7 +7,7 @@ class InputField extends StatefulWidget {
   final bool isPassword;
   final bool isEmail;
   final TextEditingController controller;
-  InputField({
+  const InputField({
     Key? key,
     required this.icon,
     required this.hintText,
