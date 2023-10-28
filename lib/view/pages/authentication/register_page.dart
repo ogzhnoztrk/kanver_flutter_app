@@ -20,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
   late TextEditingController passwordTextController;
   late TextEditingController firstNameTextController;
   late TextEditingController lastNameTextController;
-  late DateTime? _selectedDate;
+  late DateTime _selectedDate;
 
   @override
   void initState() {
@@ -30,6 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
     firstNameTextController = TextEditingController();
     passwordTextController = TextEditingController();
     lastNameTextController = TextEditingController();
+    _selectedDate = DateTime(2000);
     super.initState();
   }
 
@@ -69,7 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: size.width * .9,
                               child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   // Register TITLE
                                   Padding(
@@ -135,6 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     onTap: () {
                                       _showDatePicker(context).then((value) {
                                         _selectedDate = value;
+                                        setState(() {});
                                       });
                                     },
                                     child: Container(
@@ -146,22 +148,33 @@ class _RegisterPageState extends State<RegisterPage> {
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
-                                        child: const Row(
+                                        child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Icon(
-                                              Icons.date_range,
-                                              color: Colors.white,
+                                            Text(
+                                              'Doğum Günü:',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600,
+                                              ),
                                             ),
                                             SizedBox(width: 10),
                                             Text(
-                                              'Doğum Günü',
+                                              _selectedDate == null
+                                                  ? ""
+                                                  : "${(_selectedDate.toString()).split(" ").first}",
                                               style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 20,
+                                                fontSize: 18,
                                                 fontWeight: FontWeight.w600,
                                               ),
+                                            ),
+                                            SizedBox(width: 10),
+                                            Icon(
+                                              Icons.date_range,
+                                              color: Colors.white,
                                             ),
                                           ],
                                         )),
@@ -245,7 +258,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Future<DateTime> _showDatePicker(BuildContext context) async {
     final DateTime? selectedDate = await showDatePicker(
       context: context,
-      initialDate: DateTime(DateTime.now().year - 20),
+      initialDate: _selectedDate,
       firstDate: DateTime(1950),
       lastDate: DateTime(DateTime.now().year - 18),
     );
