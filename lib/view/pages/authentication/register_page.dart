@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:kanver_flutter_app/data/concretes/auth.dart';
-import 'package:kanver_flutter_app/view/pages/Authentication/login_page.dart';
+
+import 'package:kanver_flutter_app/view/pages/home/home_page.dart';
 import 'package:kanver_flutter_app/view/shared/widgets/input_field.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
@@ -17,11 +18,18 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   late TextEditingController emailTextController;
   late TextEditingController passwordTextController;
+  late TextEditingController firstNameTextController;
+  late TextEditingController lastNameTextController;
+  late DateTime? _selectedDate;
+
   @override
   void initState() {
     // TODO: implement initState
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
+    firstNameTextController = TextEditingController();
+    passwordTextController = TextEditingController();
+    lastNameTextController = TextEditingController();
     super.initState();
   }
 
@@ -48,9 +56,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 Center(
                   child: Column(
                     children: [
-                      const Expanded(
-                        child: SizedBox(),
-                      ),
+                      // ust boşluk
+                      SizedBox(height: size.height * 0.1),
+
                       Expanded(
                         flex: 2,
                         child: ClipRRect(
@@ -67,7 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   Padding(
                                     padding: EdgeInsets.only(
                                       top: size.width * .1,
-                                      bottom: size.width * .1,
+                                      // bottom: size.width * .1,
                                     ),
                                     child: Text(
                                       'Kayıt',
@@ -87,9 +95,78 @@ class _RegisterPageState extends State<RegisterPage> {
                                     isEmail: true,
                                     controller: emailTextController,
                                   ),
-                                  SizedBox(
-                                    height: size.height * 0.01,
+
+                                  // Row part
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: size.width * .05,
+                                        right: size.width * .05),
+                                    child: Row(
+                                      children: [
+                                        // FirstName FIELD
+                                        Expanded(
+                                          child: InputField(
+                                            icon: Icons.account_circle_outlined,
+                                            hintText: 'İsim...',
+                                            isPassword: false,
+                                            isEmail: false,
+                                            controller: firstNameTextController,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 5),
+                                        // EMAIL FIELD
+                                        Expanded(
+                                          child: InputField(
+                                            icon: Icons.account_circle,
+                                            hintText: 'Soyisim...',
+                                            isPassword: false,
+                                            isEmail: false,
+                                            controller: lastNameTextController,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
+
+                                  // Tarih seçici
+                                  InkWell(
+                                    splashColor: Colors.grey.shade100,
+                                    highlightColor: Colors.grey.shade100,
+                                    onTap: () {
+                                      _showDatePicker(context).then((value) {
+                                        _selectedDate = value;
+                                      });
+                                    },
+                                    child: Container(
+                                        height: size.width / 8,
+                                        width: size.width / 1.25,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: Colors.black.withOpacity(.1),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: const Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.date_range,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(width: 10),
+                                            Text(
+                                              'Doğum Günü',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                  ),
+
                                   // PASSWORD FIELD
                                   InputField(
                                     icon: Icons.lock_outline,
@@ -99,20 +176,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                     controller: passwordTextController,
                                   ),
 
-                                  SizedBox(height: size.width * 0.05),
-
                                   // Kayıt Butonu
                                   InkWell(
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
+                                    splashColor:
+                                        const Color.fromARGB(0, 172, 96, 96),
+                                    highlightColor:
+                                        const Color.fromARGB(0, 211, 111, 111),
                                     onTap: () {
                                       HapticFeedback.lightImpact();
-                                      // Fluttertoast.showToast(
-                                      //   msg: 'Sign-In button pressed',
-                                      // );
-                                      debugPrint("Kayıta Basıldı");
-                                      debugPrint(passwordTextController.text);
-                                      debugPrint(emailTextController.text);
                                       Auth.createUserEmailAndPassword(
                                               emailTextController.text
                                                   .toString(),
@@ -124,7 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                               .pushAndRemoveUntil(
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        const LoginPage(),
+                                                        const HomePage(),
                                                   ),
                                                   (route) => true);
                                         },
@@ -157,9 +228,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                       ),
-                      const Expanded(
-                        child: SizedBox(),
-                      ),
+
+                      // alt boşluk
+                      SizedBox(height: size.height * 0.1),
                     ],
                   ),
                 ),
@@ -169,6 +240,23 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+
+  Future<DateTime> _showDatePicker(BuildContext context) async {
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime(DateTime.now().year - 20),
+      firstDate: DateTime(1950),
+      lastDate: DateTime(DateTime.now().year - 18),
+    );
+
+    if (selectedDate != null) {
+      // Kullanıcı bir tarih seçtiğinde yapılacak işlemleri burada gerçekleştirebilirsiniz.
+      return selectedDate;
+      // print('Seçilen tarih: $selectedDate');
+    } else {
+      return DateTime(2000);
+    }
   }
 }
 

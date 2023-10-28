@@ -1,11 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
-import 'package:kanver_flutter_app/data/abstracts/iauth.dart';
+// ignore: subtype_of_sealed_class
+class Auth {
+  // static final FirebaseAuth _auth = FirebaseAuth.instance;
 
-class Auth extends IAuth {
-  static final FirebaseAuth _auth = FirebaseAuth.instance;
+  static final _auth = FirebaseAuth.instance;
 
   ///kullanıcının giriş yapıp yamadığını kontrol eden kod
   static bool isLoggedIn() {
@@ -58,6 +62,14 @@ class Auth extends IAuth {
       _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
+    }
+  }
+
+  static Future<User> getCurrentUser() async {
+    try {
+      return _auth.currentUser!;
+    } catch (e) {
+      throw e.toString();
     }
   }
 }

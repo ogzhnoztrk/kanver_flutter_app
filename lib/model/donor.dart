@@ -1,6 +1,6 @@
 class Donor {
   final int id;
-  final int userId;
+  final int applicationUserId;
   final int cityId;
 
   final bool disesaseStatus;
@@ -10,7 +10,7 @@ class Donor {
 
   Donor(
     this.id,
-    this.userId,
+    this.applicationUserId,
     this.cityId,
     this.disesaseStatus,
     this.drugStatus,
