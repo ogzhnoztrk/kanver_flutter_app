@@ -4,6 +4,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanver_flutter_app/data/concretes/repository.dart';
+import 'package:kanver_flutter_app/model/applicaton_user.dart';
 
 // ignore: subtype_of_sealed_class
 class Auth {
@@ -21,16 +23,23 @@ class Auth {
   }
 
   ///[email] ve [password] kullanıcı hesabı açan blok
-  static Future<void> createUserEmailAndPassword(
-      String email, String password) async {
+  static Future<void> createUser(String email, String password,
+      String firstName, String lastName, DateTime birthDate) async {
     try {
       var userCredential = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       var user = userCredential.user;
+
       if (!user!.emailVerified) {
         await user.sendEmailVerification();
       } else {
         debugPrint("mail onaylanmış");
+      }
+      if (_auth.currentUser != null) {
+        ApplicationUser applicationUser =
+            ApplicationUser(firstName, lastName, birthDate, false);
+        Repository()
+            .addDocumentWithDocId(applicationUser, _auth.currentUser!.uid);
       }
 
       debugPrint(user.toString());

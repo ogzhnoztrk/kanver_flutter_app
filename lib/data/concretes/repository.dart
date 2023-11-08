@@ -21,6 +21,16 @@ class Repository<T> extends IRepository {
         .add(entity.toMap() as Map<String, dynamic>);
   }
 
+  ///girilern [entity] ile veriler id yi kullanarak var ise mevcut Koleksiyona yoksa
+  ///yeni bir tane oluşturup o koleysiyona verilen [docId] ile o id ye sahip bir document
+  ///oluşturur
+  Future<void> addDocumentWithDocId(entity, String docId) async {
+    _fireStore
+        .collection("${entity.runtimeType}")
+        .doc(docId)
+        .set(entity.toMap() as Map<String, dynamic>);
+  }
+
   ///girilen entity turune göre firebaseye get isteği atılır ve firebase ilgili alanın butun
   ///documentlerini getirir
   /// [entity] burada bir classı işaret eder

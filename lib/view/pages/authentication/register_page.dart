@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:kanver_flutter_app/data/concretes/auth.dart';
+import 'package:kanver_flutter_app/model/applicaton_user.dart';
 
 import 'package:kanver_flutter_app/view/pages/home/home_page.dart';
+import 'package:kanver_flutter_app/view/shared/check_auth.dart';
 import 'package:kanver_flutter_app/view/shared/widgets/input_field.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
@@ -58,10 +60,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Column(
                     children: [
                       // ust boşluk
-                      SizedBox(height: size.height * 0.1),
+                      SizedBox(height: size.height * 0.14),
 
                       Expanded(
-                        flex: 2,
+                        flex: 1,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30),
                           child: BackdropFilter(
@@ -70,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: size.width * .9,
                               child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   // Register TITLE
                                   Padding(
@@ -115,6 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           ),
                                         ),
                                         const SizedBox(width: 5),
+
                                         // EMAIL FIELD
                                         Expanded(
                                           child: InputField(
@@ -152,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Text(
+                                            const Text(
                                               'Doğum Günü:',
                                               style: TextStyle(
                                                 color: Colors.white,
@@ -160,19 +163,21 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
-                                            SizedBox(width: 10),
+                                            const SizedBox(width: 10),
                                             Text(
                                               _selectedDate == null
                                                   ? ""
-                                                  : "${(_selectedDate.toString()).split(" ").first}",
-                                              style: TextStyle(
+                                                  : (_selectedDate.toString())
+                                                      .split(" ")
+                                                      .first,
+                                              style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
-                                            SizedBox(width: 10),
-                                            Icon(
+                                            const SizedBox(width: 10),
+                                            const Icon(
                                               Icons.date_range,
                                               color: Colors.white,
                                             ),
@@ -197,18 +202,24 @@ class _RegisterPageState extends State<RegisterPage> {
                                         const Color.fromARGB(0, 211, 111, 111),
                                     onTap: () {
                                       HapticFeedback.lightImpact();
-                                      Auth.createUserEmailAndPassword(
+
+                                      Auth.createUser(
                                               emailTextController.text
                                                   .toString(),
                                               passwordTextController.text
-                                                  .toString())
+                                                  .toString(),
+                                              firstNameTextController.text
+                                                  .toString(),
+                                              lastNameTextController.text
+                                                  .toString(),
+                                              _selectedDate.toUtc())
                                           .whenComplete(
                                         () {
                                           Navigator.of(context)
                                               .pushAndRemoveUntil(
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        const HomePage(),
+                                                        const CheckAuth(),
                                                   ),
                                                   (route) => true);
                                         },
@@ -243,7 +254,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
 
                       // alt boşluk
-                      SizedBox(height: size.height * 0.1),
+                      SizedBox(height: size.height * 0.14),
                     ],
                   ),
                 ),
